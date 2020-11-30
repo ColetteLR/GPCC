@@ -2,7 +2,7 @@
 
 Algorithms were developed in MATLAB for the implementation of the Student's t Gaussian process conditional copula (GPCC).
 The code is based on an R software package written by Hernandez-Lobato et al. 
-(R code available at https://github.com/lopezpaz/gaussian\_process\_conditional\_copulas/tree/master/code)
+(R code available at https://github.com/lopezpaz/gaussian_process_conditional_copulas)
 
 ## Application
 

@@ -1,0 +1,36 @@
+% Generate a synthetic dataset or import uniform dataset
+
+%X = importdata('data.txt');
+%n = size(X,1);
+n = 1000;
+
+% Generate the data
+
+X = zeros(n,2);
+tau = zeros(n,1);
+nu = zeros(n,1);
+time = (1:n)';
+for i=time
+	nu(i) = 1 + 2 .* (1 + cos(i .* 2 .* pi ./ 500));
+	tau(i) = 0.3 + 0.2 .* (cos(i .* 2 .* pi / 250));
+	X(i,:) = copularnd('t', sin((tau(i) .* pi) ./ 2), nu(i),1);
+end
+
+% Adjust a conditional student t copula to the first n-1 observations
+
+Z = time;
+
+Xtrain = X(1:size(X,1)-1,:);
+Xtest = X(size(X,1),:);
+
+Ztrain = Z(1:(size(Z,1)-1),:);
+Ztest = Z(size(Z,1),:);
+
+m=100;
+ret_sim = fitCTC(Xtrain, Ztrain, m);
+
+% Evaluate the test ll of the conditional copula
+
+retTest_sim = evaluateLLCTC(ret_sim, Xtest(:,1), Xtest(:,2), Ztest);
+
+

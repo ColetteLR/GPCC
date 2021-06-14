@@ -7,7 +7,8 @@ The code is based on an R software package written by Hernandez-Lobato et al.
 ## Application
 
 Run the 'Experiment.m' file with input a text (.txt) file without variable headers. 
-The dataset should contain the transformed data in the probability space.
+The dataset should contain the transformed data in the probability space. 
+A simulated dataset 'data2.txt' is included as reference, with corresponding transformed dataset 'udata.txt' in the probability space.
 In this example code, time is used as the conditioning variable (Z=(1:n)'), but other conditioning variables can be used instead if required.
 
 ## References
